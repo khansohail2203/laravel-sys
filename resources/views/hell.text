@@ -1,0 +1,41 @@
+      <div class="container">
+    <h1><i>Student Management System</i>
+</h1>
+<br><br>
+<table>
+    <tr>
+        <td>id</td>
+        <td>FirstName</td>l
+        <td>SecondName</td>
+        <td>Age</td>
+        <td>Speciality</td>
+        <td>Operations</td>
+        <td><a class="btn btn-primary" href="create" target="_blank">Create</a></td>
+        
+    </tr>
+    @foreach($students as $student)
+    <tr>
+        <td>{{$student['id']}}</td>
+        <td>{{$student['firstName']}}</td>
+        <td>{{$student['secondName']}}</td>
+        <td>{{$student['age']}}</td>
+        <td>{{$student['speciality']}}</td>
+        <td><a href="{{'delete/'.$student['id']}}">Delete</a>,<a href="{{'edit/'.$student['id']}}">Edit</a></td>
+
+    </tr>
+    @endforeach
+</table>
+
+edit file
+<h1>Update student's Id</h1>
+<form action="/edit" method="POST">
+    @csrf
+    <input type="hidden" name=id value="{{$data['id']}}">
+    <input type="text" name=firstName value="{{$data['firstName']}}"><br><br>
+    <input type="text" name=secondName value="{{$data['secondName']}}"> <br><br>
+    <input type="text" name=age value="{{$data['age']}}"> <br><br>
+    <input type="text" name=speciality value="{{$data['speciality']}}"> <br><br>
+    <button text='submit'>Update</button>
+</form>
+
+
